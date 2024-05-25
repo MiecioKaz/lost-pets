@@ -19,7 +19,7 @@ const Navbar = async () => {
   return (
     <>
       <section className="hidden sm:block">
-        <div className="fixed top-0 w-full h-20 px-3 sm:px-10 flex justify-between items-center border-b-2 bg-gradient-to-l from-green-100 to-white">
+        <div className="fixed top-0 w-full h-20 px-3 sm:px-10 flex justify-between items-center border-b-2 bg-gradient-to-l from-green-100 to-white z-10">
           <div className="flex items-center w-min">
             <div className="relative w-16 h-16">
               <Image
@@ -42,9 +42,15 @@ const Navbar = async () => {
           <div className="flex text-lg font-semibold text-slate-600">
             <Link
               href="/"
-              className="text-lg mr-10 font-semibold text-slate-600 hover:text-amber-600"
+              className="mr-10 font-semibold text-slate-600 hover:text-amber-600"
             >
               Home
+            </Link>
+            <Link
+              href="/pets/delete-pets"
+              className="mr-10 font-semibold text-slate-600 hover:text-amber-600"
+            >
+              Moje<span className="text-xl">🐾</span>
             </Link>
 
             {session && session.user ? (
@@ -77,7 +83,7 @@ const Navbar = async () => {
           </div>
         </div>
       </section>
-      <div className="sm:hidden">
+      <div className="lg:hidden">
         <NavbarLower logOut={logOut} />
       </div>
     </>

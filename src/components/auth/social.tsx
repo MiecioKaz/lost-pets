@@ -14,7 +14,7 @@ export const Social = () => {
   };
 
   return (
-    <div className="flex items-center w-full gap-x-2">
+    <div className="flex items-center w-full gap-x-2 mb-4">
       <button
         onClick={() => onClick("google")}
         className="w-full border-2 rounded-sm py-1 hover:bg-slate-100"

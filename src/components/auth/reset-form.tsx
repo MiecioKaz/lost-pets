@@ -15,9 +15,12 @@ export const ResetForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
-  const { register, handleSubmit, reset } = useForm<
-    z.infer<typeof ResetSchema>
-  >({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<z.infer<typeof ResetSchema>>({
     resolver: zodResolver(ResetSchema),
     defaultValues: {
       email: "",
@@ -51,8 +54,15 @@ export const ResetForm = () => {
           {...register("email")}
           type="email"
           placeholder="Jan_Kowalski@gmail.com"
-          className="w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1"
+          className={`w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1 ${
+            errors.email && "border-red-500 mb-2"
+          } appearance-none focus:outline-none focus:shadow-outline`}
         />
+        {errors.email && (
+          <p className="text-xs italic text-red-500 mb-2">
+            {errors.email.message}
+          </p>
+        )}
         <FormError message={error} />
         <FormSuccess message={success} />
         <button

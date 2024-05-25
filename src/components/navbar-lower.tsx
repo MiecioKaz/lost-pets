@@ -15,7 +15,9 @@ const NavbarSm = ({ logOut }: { logOut: () => void }) => {
   const { data: session } = useSession();
 
   const clickMenu = () => {
-    setLowerSection("fixed top-20 w-full h-20 bg-white border-b-2");
+    setLowerSection(
+      "fixed top-20 w-full h-14 bg-gradient-to-r from-green-100 to-white border-b-2 z-10"
+    );
     setMenuIcon("hidden");
     setCloseIcon("block");
   };
@@ -27,12 +29,13 @@ const NavbarSm = ({ logOut }: { logOut: () => void }) => {
 
   return (
     <>
-      <section className="fixed top-0 w-full h-20 flex justify-between items-center px-3 sm:px-10 bg-white border-b-2">
+      <section className="fixed top-0 w-full h-20 flex justify-between items-center px-3 sm:px-10 bg-gradient-to-l from-green-100 to-white border-b-2 z-10">
         <div className="flex items-center w-min">
           <div className="relative w-16 h-16">
             <Image
               src={illustrDog}
               fill
+              sizes="33vw"
               className="object-cover object-center"
               alt="vecteezy image"
             />
@@ -60,14 +63,20 @@ const NavbarSm = ({ logOut }: { logOut: () => void }) => {
         </div>
       </section>
       <section className={lowerSection}>
-        <div className="flex justify-around h-20 items-center">
+        <div className="flex justify-around h-14 items-center">
           <Link
             href="/"
-            className="text-lg font-semibold text-slate-600 hover:text-amber-600"
+            className="text-sm sm:text-lg font-semibold text-slate-600 hover:text-amber-600"
           >
             Home
           </Link>
-          <div className="flex text-lg font-semibold text-slate-600">
+          <Link
+            href="/pets/delete-pets"
+            className="text-sm sm:text-lg font-semibold text-slate-600 hover:text-amber-600"
+          >
+            Moje<span className="text-xl">🐾</span>
+          </Link>
+          <div className="flex text-sm sm:text-lg font-semibold text-slate-600">
             {session && session.user ? (
               <>
                 <h1 className="text-cyan-500 italic mr-10">
@@ -87,7 +96,12 @@ const NavbarSm = ({ logOut }: { logOut: () => void }) => {
                 </form>
               </>
             ) : (
-              <Link href="/auth/login">Zaloguj</Link>
+              <Link
+                href="/auth/login"
+                className="hover:text-amber-600"
+              >
+                Zaloguj
+              </Link>
             )}
           </div>
         </div>

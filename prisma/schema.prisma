@@ -42,6 +42,7 @@ model User {
   image         String?
   password      String?
   accounts      Account[]
+  createdAt     DateTime  @default(now())
 }
 
 model VerificationToken {
@@ -61,6 +62,30 @@ model PasswordResetToken {
 
   @@unique([email, token])
 }
+
+type Pet {
+  status      String
+  breed       String
+  description String
+}
+
+type Picture {
+  imgUrl   String
+  imgId    String
+}
+
+model Owner {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userName    String
+  userId      String
+  phoneNumber String
+  town        String
+  email       String?
+  pet        Pet
+  picture     Picture[]
+  createdAt   DateTime  @default(now())
+}
+
 
 
 

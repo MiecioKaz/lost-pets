@@ -16,9 +16,12 @@ export const RegisterForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
-  const { register, handleSubmit, reset } = useForm<
-    z.infer<typeof RegisterSchema>
-  >({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
       name: "",
@@ -41,33 +44,54 @@ export const RegisterForm = () => {
   };
 
   return (
-    <>
+    <div className=" px-4 pb-4">
       <div className="text-center my-6">
         <h1 className="text-2xl font-extrabold">🔐 Auth</h1>
         <p className="text-muted-foreground text-sm mt-4">Utwórz konto</p>
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col px-4 pb-4"
+        className="flex flex-col"
       >
         <label className="font-bold">Imię/Nazwisko</label>
         <input
           {...register("name")}
           placeholder="Jan Kowalski"
-          className="w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1"
+          className={`w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1 ${
+            errors.name && "border-red-500 mb-2"
+          } appearance-none focus:outline-none focus:shadow-outline`}
         />
+        {errors.name && (
+          <p className="text-xs italic text-red-500 mb-2">
+            {errors.name.message}
+          </p>
+        )}
         <label className="font-bold">Email</label>
         <input
           {...register("email")}
           placeholder="jan_kowalski@gmail.com"
-          className="w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1"
+          className={`w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1 ${
+            errors.email && "border-red-500 mb-2"
+          } appearance-none focus:outline-none focus:shadow-outline`}
         />
+        {errors.email && (
+          <p className="text-xs italic text-red-500 mb-2">
+            {errors.email.message}
+          </p>
+        )}
         <label className="font-bold">Hasło</label>
         <input
           {...register("password")}
           placeholder="********"
-          className="w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1"
+          className={`w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1 ${
+            errors.password && "border-red-500 mb-2"
+          } appearance-none focus:outline-none focus:shadow-outline`}
         />
+        {errors.password && (
+          <p className="text-xs italic text-red-500 mb-2">
+            {errors.password.message}
+          </p>
+        )}
         <FormError message={error} />
         <FormSuccess message={success} />
         <button
@@ -77,14 +101,16 @@ export const RegisterForm = () => {
         >
           {isPending ? "Loading..." : "Utwórz konto"}
         </button>
+      </form>
+      <div className="text-center">
         <Social />
         <Link
           href="/auth/login"
-          className="underline text-center hover:text-amber-700 mt-6"
+          className="underline hover:text-amber-700"
         >
           Masz już konto?
         </Link>
-      </form>
-    </>
+      </div>
+    </div>
   );
 };

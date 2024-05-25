@@ -19,9 +19,12 @@ export const NewPasswordForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
-  const { register, handleSubmit, reset } = useForm<
-    z.infer<typeof NewPasswordSchema>
-  >({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<z.infer<typeof NewPasswordSchema>>({
     resolver: zodResolver(NewPasswordSchema),
     defaultValues: {
       password: "",
@@ -58,8 +61,15 @@ export const NewPasswordForm = () => {
           {...register("password")}
           type="password"
           placeholder="********"
-          className="w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1"
+          className={`w-full h-9 border-2 rounded-lg px-2 mb-4 mt-1 ${
+            errors.password && "border-red-500 mb-2"
+          } appearance-none focus:outline-none focus:shadow-outline`}
         />
+        {errors.password && (
+          <p className="text-xs italic text-red-500 mb-2">
+            {errors.password.message}
+          </p>
+        )}
         <FormError message={error} />
         <FormSuccess message={success} />
         {!success && !error && (

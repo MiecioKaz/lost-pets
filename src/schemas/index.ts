@@ -19,7 +19,6 @@ export const LoginSchema = z.object({
   password: z.string().min(1, {
     message: "Hasło obowiązkowe",
   }),
-  // code: z.optional(z.string()),
 });
 
 export const ResetSchema = z.object({
@@ -31,5 +30,43 @@ export const ResetSchema = z.object({
 export const NewPasswordSchema = z.object({
   password: z.string().min(6, {
     message: "Wymagane jest minimum 6 znaków",
+  }),
+});
+
+export const RegisterPetSchema = z.object({
+  status: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+  breed: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+
+  description: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+  userName: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+  phoneNumber: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+  town: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+  email: z
+    .union([z.string().email(), z.string().length(0)])
+    .optional()
+    .transform((e) => (e === "" ? undefined : e)),
+});
+
+export const SearchPetSchema = z.object({
+  status: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+  breed: z.string().min(1, {
+    message: "Pole obowiązkowe",
+  }),
+  town: z.string().min(1, {
+    message: "Pole obowiązkowe",
   }),
 });

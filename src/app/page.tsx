@@ -1,12 +1,13 @@
 import Image from "next/image";
-import illustrGroup2 from "/public/illustr-group-2.jpg";
+
+import illustrGroup from "/public/illustr-group.jpg";
 import illustrBalloons from "/public/illustr-balloons.jpg";
 import { tilt_neon } from "./fonts";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className={`grid grid-cols-2 mt-28 sm:mt-40 ${tilt_neon.className}`}>
+    <main className={`grid grid-cols-2 mt-44 sm:mt-40 ${tilt_neon.className}`}>
       <div className="col-span-2 text-2xl sm:text-4xl text-purple-900 font-extrabold pl-10 sm:px-20">
         <p>Zaginął twój zwierzak?</p>
         <p>Znalazłeś zabłąkanego zwierzaka?</p>
@@ -27,11 +28,12 @@ export default function Home() {
       </div>
 
       <Image
-        src={illustrGroup2}
+        src={illustrGroup}
         style={{
           width: "80%",
           height: "auto",
         }}
+        sizes="33vw"
         alt="vecteezy image"
         className="place-self-center"
       />
@@ -49,26 +51,27 @@ export default function Home() {
           width: "60%",
           height: "auto",
         }}
+        sizes="33vw"
         alt="vecteezy image"
         className="place-self-center"
       />
       <div className="pt-6 sm:pt-20 text-purple-900 font-bold">
         <Link
-          href="/"
+          href="/pets/search-pet"
           className="inline-block sm:inline border-2 border-orange-600 hover:bg-orange-200 rounded-full px-1 sm:p-2 mr-4"
         >
-          Przeglądaj zdjęcia
+          Szukaj
         </Link>
         <Link
-          href="/"
+          href="/pets/register-pet"
           className="inline-block sm:inline border-2 border-orange-600 hover:bg-orange-200 rounded-full px-1 sm:p-2 mt-2 sm:mb-0"
         >
-          Zarejestruj zwierzaka
+          Zarejestruj
         </Link>
       </div>
 
       <Link
-        href="/"
+        href="/privacy.html"
         className="hidden sm:block fixed w-40 bottom-4 left-4 hover:underline"
       >
         Polityka Prywatności
