@@ -8,5 +8,5 @@ export const inter = Inter({
 export const tilt_neon = Tilt_Neon({
   subsets: ["latin"],
   display: "swap",
-  fallback: ["inter"],
+  adjustFontFallback: false,
 });
