@@ -4,7 +4,6 @@ import { useState } from "react";
 import type { Owner } from "../../../types/types";
 import Image from "next/image";
 import illustrDogHead from "/public/illustr-dog-2.jpg";
-import { RiH1 } from "react-icons/ri";
 
 export const MatchedPetData = ({
   matchedPet,
