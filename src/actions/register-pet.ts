@@ -1,7 +1,7 @@
 "use server";
 
 import * as z from "zod";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 import { RegisterPetSchema } from "@/schemas";
 import { auth } from "auth";
 
@@ -27,7 +27,7 @@ export const registerPet = async (
     return { error: "Nie jesteś zalogowany" };
   }
 
-  const owner = await db.owner.create({
+  const owner = await prisma.owner.create({
     data: {
       userName,
       userId,

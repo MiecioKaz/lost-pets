@@ -1,10 +1,10 @@
 import { auth } from "auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 import { DeletePetsComp } from "@/components/pets/delete-pets-comp";
 
 const getOwnerByUserId = async (userId: string | undefined) => {
   try {
-    const matchedPets = await db.owner.findMany({
+    const matchedPets = await prisma.owner.findMany({
       where: {
         userId,
       },

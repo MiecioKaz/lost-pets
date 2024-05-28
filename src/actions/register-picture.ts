@@ -1,6 +1,6 @@
 "use server";
 
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 
 type Picture = {
   imgUrl: string;
@@ -11,7 +11,7 @@ export const registerPicture = async (
   petImgData: Picture[],
   ownerPetId: string
 ) => {
-  const updatedOwner = await db.owner.update({
+  const updatedOwner = await prisma.owner.update({
     where: {
       id: ownerPetId,
     },

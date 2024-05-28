@@ -1,10 +1,10 @@
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 import type { Owner } from "../../../../types/types";
 import { MatchedPetData } from "@/components/pets/matched-pet-data";
 
 const getMatchedPets = async (status: string, breed: string, town: string) => {
   try {
-    const pets = await db.owner.findMany({
+    const pets = await prisma.owner.findMany({
       where: {
         town,
         pet: {

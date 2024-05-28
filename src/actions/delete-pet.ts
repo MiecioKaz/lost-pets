@@ -1,11 +1,11 @@
 "use server";
 
-import { db } from "@/lib/db";
+import prisma from "@/lib/db";
 import { imageDelete } from "@/lib/cloudinary";
 
 export const deletePet = async (id: string) => {
   try {
-    const pet = await db.owner.delete({
+    const pet = await prisma.owner.delete({
       where: { id },
     });
 
