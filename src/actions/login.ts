@@ -8,7 +8,7 @@ import { getUserByEmail } from "@/data/user";
 
 export const login = async (
   values: z.infer<typeof LoginSchema>,
-  callbackUrl?: string | null
+  callbackUrl?: string | undefined
 ) => {
   const validatedFields = LoginSchema.safeParse(values);
 
@@ -28,7 +28,7 @@ export const login = async (
     await signIn("credentials", {
       email,
       password,
-      redirectTo: callbackUrl || "/",
+      redirectTo: callbackUrl,
     });
   } catch (error) {
     if (error instanceof AuthError) {
