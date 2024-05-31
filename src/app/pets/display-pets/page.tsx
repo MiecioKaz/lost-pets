@@ -35,12 +35,11 @@ const DisplayPetsPage = async ({
     breed,
     town
   );
-  const [dog, cat, other] = ["Pies", "Kot", "Inne"];
 
   if (matchedPets?.length === 0) {
     return (
       <>
-        <div className="fixed top-36 sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-xl bg-white z-10">
+        <div className="fixed top-36 inset-x-auto sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-xl bg-white z-10">
           <div className="flex justify-around">
             <p>
               Miasto: <span className="font-bold">{town}</span>
@@ -70,7 +69,7 @@ const DisplayPetsPage = async ({
   } else {
     return (
       <>
-        <div className="fixed top-36 sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-2xl bg-white z-10">
+        <div className="fixed top-36 inset-x-auto sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-2xl bg-white z-10">
           <div className="flex justify-around">
             <p>
               Miasto: <span className="font-bold">{town}</span>

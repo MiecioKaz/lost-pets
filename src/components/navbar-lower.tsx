@@ -8,7 +8,13 @@ import { VscChromeClose, VscMenu } from "react-icons/vsc";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 
-const NavbarSm = ({ logOut }: { logOut: () => void }) => {
+const NavbarSm = ({
+  logOut,
+  userName,
+}: {
+  logOut: () => void;
+  userName: string | null | undefined;
+}) => {
   const [lowerSection, setLowerSection] = useState("hidden");
   const [menuIcon, setMenuIcon] = useState("block");
   const [closeIcon, setCloseIcon] = useState("hidden");
@@ -77,10 +83,10 @@ const NavbarSm = ({ logOut }: { logOut: () => void }) => {
             Moje<span className="text-xl">🐾</span>
           </Link>
           <div className="flex text-sm sm:text-lg font-semibold text-slate-600">
-            {session && session.user ? (
+            {userName ? (
               <>
                 <h1 className="text-cyan-500 italic mr-10">
-                  Hello, {session.user.name}
+                  Hello, {userName}
                 </h1>
                 <form
                   action={() => {

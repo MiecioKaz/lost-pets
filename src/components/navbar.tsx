@@ -1,15 +1,12 @@
 import { tilt_neon } from "@/app/fonts";
 import Image from "next/image";
 import illustrDog from "/public/illustr-dog.jpg";
-import { auth, signOut } from "auth";
+import { auth, signOut } from "../../auth";
 import Link from "next/link";
 import NavbarLower from "./navbar-lower";
 
 const Navbar = async () => {
   const session = await auth();
-  if (session && session.user) {
-    console.log(session.user.id);
-  }
 
   const logOut = async () => {
     "use server";
@@ -84,7 +81,10 @@ const Navbar = async () => {
         </div>
       </section>
       <div className="lg:hidden">
-        <NavbarLower logOut={logOut} />
+        <NavbarLower
+          logOut={logOut}
+          userName={session?.user?.name}
+        />
       </div>
     </>
   );

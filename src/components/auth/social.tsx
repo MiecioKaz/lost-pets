@@ -9,20 +9,21 @@ export const Social = () => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
 
-  const onClick = (provider: "google" | "twitter") => {
+  const handleClick = (provider: "google" | "twitter") => {
     signIn(provider, { callbackUrl: callbackUrl || "/" });
   };
 
   return (
     <div className="flex items-center w-full gap-x-2 mb-4">
       <button
-        onClick={() => onClick("google")}
+        onClick={() => handleClick("google")}
         className="w-full border-2 rounded-sm py-1 hover:bg-slate-100"
       >
         <FcGoogle className="h-5 w-5 mx-auto" />
       </button>
+
       <button
-        onClick={() => onClick("twitter")}
+        onClick={() => handleClick("twitter")}
         className="w-full border-2 rounded-sm py-1 hover:bg-slate-100"
       >
         <FaXTwitter className="h-5 w-5 mx-auto" />

@@ -3,12 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/lib/db";
 import authConfig from "./auth.config";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
-} = NextAuth({
+export const { auth, signIn, signOut, handlers } = NextAuth({
   pages: {
     signIn: "/auth/login",
     error: "/auth/error",
@@ -26,7 +21,6 @@ export const {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
-
       return session;
     },
   },
