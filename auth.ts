@@ -8,6 +8,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
     signIn: "/auth/login",
     error: "/auth/error",
   },
+  secret: process.env.AUTH_SECRET,
 
   callbacks: {
     async signIn({ account }) {
