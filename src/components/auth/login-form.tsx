@@ -9,7 +9,6 @@ import Link from "next/link";
 import { LoginSchema } from "@/schemas";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { Social } from "./social";
 import { login } from "@/actions/login";
 
 export const LoginForm = () => {
@@ -52,7 +51,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className=" px-4 pb-4">
+    <div className=" px-4">
       <div className="text-center my-6">
         <h1 className="text-2xl font-extrabold">🔐 Auth</h1>
         <p className="text-muted-foreground text-sm mt-4">Witaj ponownie</p>
@@ -105,15 +104,6 @@ export const LoginForm = () => {
           {isPending ? "Loading..." : "Zaloguj"}
         </button>
       </form>
-      <div className="text-center">
-        <Social />
-        <Link
-          href="/auth/register"
-          className="underline hover:text-amber-700"
-        >
-          Nie masz konta?
-        </Link>
-      </div>
     </div>
   );
 };

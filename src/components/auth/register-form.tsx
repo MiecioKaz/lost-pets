@@ -8,8 +8,6 @@ import { RegisterSchema } from "@/schemas";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { registerUser } from "@/actions/register";
-import Link from "next/link";
-import { Social } from "./social";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -102,15 +100,6 @@ export const RegisterForm = () => {
           {isPending ? "Loading..." : "Utwórz konto"}
         </button>
       </form>
-      <div className="text-center">
-        <Social />
-        <Link
-          href="/auth/login"
-          className="underline hover:text-amber-700"
-        >
-          Masz już konto?
-        </Link>
-      </div>
     </div>
   );
 };

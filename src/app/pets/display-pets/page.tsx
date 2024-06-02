@@ -41,17 +41,17 @@ const DisplayPetsPage = async ({
       <>
         <div className="fixed top-36 inset-x-auto sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-xl bg-white z-10">
           <div className="flex justify-around">
-            <p>
+            <p className="text-center">
               Miasto: <span className="font-bold">{town}</span>
             </p>
-            <p>
+            <p className="text-center">
               Rasa:{" "}
               <span className="font-bold">
                 {breed === "dog" && "Pies"} {breed === "cat" && "Kot"}{" "}
                 {breed === "other" && "Inny"}
               </span>
             </p>
-            <p>
+            <p className="text-center">
               Status:{" "}
               <span className="font-bold">
                 {status === "lost" && "Zagubiony"}{" "}
@@ -60,7 +60,7 @@ const DisplayPetsPage = async ({
             </p>
           </div>
         </div>
-        <h1 className="text-xl text-red-600">
+        <h1 className="text-xl text-center text-red-600 mt-6">
           Nie ma jeszcze zwierzaka odpowiadającego podanym parametrom
           wyszukiwania.
         </h1>
@@ -71,17 +71,17 @@ const DisplayPetsPage = async ({
       <>
         <div className="fixed top-36 inset-x-auto sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-2xl bg-white z-10">
           <div className="flex justify-around">
-            <p>
+            <p className="text-center">
               Miasto: <span className="font-bold">{town}</span>
             </p>
-            <p>
+            <p className="text-center">
               Rasa:{" "}
               <span className="font-bold">
                 {breed === "dog" && "Pies"} {breed === "cat" && "Kot"}{" "}
                 {breed === "other" && "Inny"}
               </span>
             </p>
-            <p>
+            <p className="text-center">
               Status:{" "}
               <span className="font-bold">
                 {status === "lost" && "Zagubiony"}{" "}
