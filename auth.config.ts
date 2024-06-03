@@ -8,8 +8,21 @@ import { getUserByEmail } from "@/data/user";
 
 export default {
   providers: [
-    Google,
-    Twitter,
+    Google({
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
+    }),
+    Twitter({
+      clientId: process.env.AUTH_TEITTER_ID,
+      clientSecret: process.env.AUTH_TWITTER_SECRET,
+    }),
     Credentials({
       async authorize(credentials) {
         const validatedFields = LoginSchema.safeParse(credentials);

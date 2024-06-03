@@ -5,5 +5,6 @@ export type ExtendedUser = DefaultSession["user"];
 declare module "next-auth" {
   interface Session {
     user: ExtendedUser;
+    accessToken?: string;
   }
 }

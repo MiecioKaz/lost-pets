@@ -17,6 +17,13 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
 
       return true;
     },
+    async jwt({ token, account }) {
+      // Persist the OAuth access_token after signin
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
 
     async session({ token, session }) {
       if (token.sub && session.user) {
