@@ -3,7 +3,7 @@
 import * as z from "zod";
 import prisma from "@/lib/db";
 import { RegisterPetSchema } from "@/schemas";
-import { auth } from "../../auth";
+import { auth } from "@/auth";
 
 export const registerPet = async (
   values: z.infer<typeof RegisterPetSchema>

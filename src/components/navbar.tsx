@@ -1,7 +1,7 @@
 import { tilt_neon } from "@/app/fonts";
 import Image from "next/image";
 import illustrDog from "/public/illustr-dog.jpg";
-import { auth, signOut } from "../../auth";
+import { auth, signOut } from "@/auth";
 import Link from "next/link";
 import NavbarLower from "./navbar-lower";
 
@@ -22,6 +22,7 @@ const Navbar = async () => {
               <Image
                 src={illustrDog}
                 fill
+                sizes="33vw"
                 className="object-cover object-center bg-transparent"
                 alt="vecteezy image"
               />

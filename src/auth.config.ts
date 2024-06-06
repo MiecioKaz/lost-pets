@@ -3,7 +3,7 @@ import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import Twitter from "next-auth/providers/twitter";
-import { LoginSchema } from "./src/schemas";
+import { LoginSchema } from "@/schemas/index";
 import { getUserByEmail } from "@/data/user";
 
 export default {
@@ -20,7 +20,7 @@ export default {
       },
     }),
     Twitter({
-      clientId: process.env.AUTH_TEITTER_ID,
+      clientId: process.env.AUTH_TWITTER_ID,
       clientSecret: process.env.AUTH_TWITTER_SECRET,
     }),
     Credentials({

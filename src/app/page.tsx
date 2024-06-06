@@ -34,6 +34,7 @@ export default function Home() {
           height: "auto",
         }}
         sizes="33vw"
+        priority
         alt="vecteezy image"
         className="place-self-center"
       />
@@ -52,6 +53,7 @@ export default function Home() {
           height: "auto",
         }}
         sizes="33vw"
+        priority
         alt="vecteezy image"
         className="place-self-center"
       />

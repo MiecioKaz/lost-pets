@@ -1,4 +1,4 @@
-import { signIn } from "../../../auth";
+import { signIn } from "@/auth";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
