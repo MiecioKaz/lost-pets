@@ -38,8 +38,8 @@ const DisplayPetsPage = async ({
 
   if (matchedPets?.length === 0) {
     return (
-      <>
-        <div className="fixed top-36 inset-x-auto sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-xl bg-white z-10">
+      <div className="relative w-full h-fit">
+        <div className="fixed top-36 left-1/2 -translate-x-[150px] sm:-translate-x-[295px] sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-xl bg-white z-10">
           <div className="flex justify-around">
             <p className="text-center">
               Miasto: <span className="font-bold">{town}</span>
@@ -64,12 +64,12 @@ const DisplayPetsPage = async ({
           Nie ma jeszcze zwierzaka odpowiadającego podanym parametrom
           wyszukiwania.
         </h1>
-      </>
+      </div>
     );
   } else {
     return (
-      <>
-        <div className="fixed top-36 inset-x-auto sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-2xl bg-white z-10">
+      <div className="relative w-full h-fit">
+        <div className="fixed top-36 left-1/2 -translate-x-[150px] sm:-translate-x-[295px] sm:top-40 w-[300px] sm:w-[590px] h-fit p-1 border rounded-2xl bg-white z-10">
           <div className="flex justify-around">
             <p className="text-center">
               Miasto: <span className="font-bold">{town}</span>
@@ -100,7 +100,7 @@ const DisplayPetsPage = async ({
             />
           ))}
         </div>
-      </>
+      </div>
     );
   }
 };

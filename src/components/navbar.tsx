@@ -54,7 +54,7 @@ const Navbar = async () => {
             {session && session.user ? (
               <>
                 <h1 className="text-cyan-500 italic mr-10">
-                  Hello, {session.user.name}
+                  Witaj, {session.user.name}
                 </h1>
                 <form
                   action={async () => {

@@ -21,14 +21,18 @@ const getOwnerByUserId = async (userId: string | undefined) => {
 const EditPetsPage = async () => {
   const session = await auth();
   if (!session || !session.user) {
-    return <h1 className="text-2xl text-red-800">Nie jesteś zalogowany</h1>;
+    return (
+      <h1 className="text-lg sm:text-2xl text-center text-red-800">
+        Nie jesteś zalogowany
+      </h1>
+    );
   }
 
   const pets = await getOwnerByUserId(session.user.id);
 
   if (!pets) {
     return (
-      <h1 className="text-2xl text-red-800">
+      <h1 className="text-lg sm:text-2xl text-center text-red-800">
         Nie zarejestrowałeś jeszcze żadnego zwierzaka
       </h1>
     );

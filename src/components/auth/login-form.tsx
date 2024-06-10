@@ -8,12 +8,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { LoginSchema } from "@/schemas";
 import { FormError } from "../form-error";
-import { FormSuccess } from "../form-success";
 import { login } from "@/actions/login";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const searchParams = useSearchParams();
   const calbackUrl = searchParams.get("callbackUrl");
@@ -33,7 +31,6 @@ export const LoginForm = () => {
 
   const onSubmit: SubmitHandler<z.infer<typeof LoginSchema>> = (data) => {
     setError("");
-    setSuccess("");
 
     startTransition(() => {
       login(data, calbackUrl)
@@ -41,9 +38,6 @@ export const LoginForm = () => {
           if (result?.error) {
             reset({ email: "", password: "" });
             setError(result.error);
-          } else {
-            reset({ email: "", password: "" });
-            setSuccess("Zalogowałeś się pomyślnie!");
           }
         })
         .catch(() => setError("Oops! Coś poszło nie tak!"));
@@ -95,7 +89,6 @@ export const LoginForm = () => {
           Zapomniałeś hasła?
         </Link>
         <FormError message={error} />
-        <FormSuccess message={success} />
         <button
           type="submit"
           disabled={isPending}

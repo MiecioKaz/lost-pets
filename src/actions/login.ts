@@ -32,12 +32,7 @@ export const login = async (
     });
   } catch (error) {
     if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return { error: "Nieważne hasło lub email!" };
-        default:
-          return { error: "Oops! Coś poszło nie tak!" };
-      }
+      return { error: "Nieprawidłowe hasło!" };
     }
     throw error;
   }

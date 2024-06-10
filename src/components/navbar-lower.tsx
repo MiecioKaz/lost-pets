@@ -5,7 +5,6 @@ import Link from "next/link";
 import illustrDog from "/public/illustr-dog.jpg";
 import { tilt_neon } from "@/app/fonts";
 import { VscChromeClose, VscMenu } from "react-icons/vsc";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 const NavbarSm = ({
@@ -18,7 +17,6 @@ const NavbarSm = ({
   const [lowerSection, setLowerSection] = useState("hidden");
   const [menuIcon, setMenuIcon] = useState("block");
   const [closeIcon, setCloseIcon] = useState("hidden");
-  const { data: session } = useSession();
 
   const clickMenu = () => {
     setLowerSection(
@@ -86,7 +84,7 @@ const NavbarSm = ({
             {userName ? (
               <>
                 <h1 className="text-cyan-500 italic mr-10">
-                  Hello, {userName}
+                  Witaj, {userName}
                 </h1>
                 <form
                   action={() => {

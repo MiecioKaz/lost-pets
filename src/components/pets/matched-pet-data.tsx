@@ -64,7 +64,7 @@ export const MatchedPetData = ({
       </div>
       {isDisplayed && (
         <div
-          className={`absolute left-0 -bottom-22 w-full h-fit flex justify-evenly py-3 border bg-neutral-800 text-white z-10`}
+          className={`absolute left-0 -bottom-22 w-full h-fit flex justify-evenly p-3 border bg-neutral-800 text-white z-10`}
         >
           <div>
             <p className="italic">
